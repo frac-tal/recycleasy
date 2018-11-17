@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode;
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcodeDetector;
+import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcodeDetectorOptions;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 
 import java.util.List;
@@ -51,17 +52,24 @@ public class ScanActivity extends AppCompatActivity {
             Bundle extras = data.getExtras();
             mBitmap = (Bitmap) extras.get("data");
             mImageView.setImageBitmap(mBitmap);
+            FirebaseVisionBarcodeDetectorOptions options =
+                    new FirebaseVisionBarcodeDetectorOptions.Builder()
+                            .setBarcodeFormats(FirebaseVisionBarcode.FORMAT_ALL_FORMATS).build();
             FirebaseVisionImage image = FirebaseVisionImage.fromBitmap(mBitmap);
             FirebaseVisionBarcodeDetector detector = FirebaseVision.getInstance()
-                    .getVisionBarcodeDetector();
+                    .getVisionBarcodeDetector(options);
             Task<List<FirebaseVisionBarcode>> result = detector.detectInImage(image)
                     .addOnSuccessListener(new OnSuccessListener<List<FirebaseVisionBarcode>>() {
                         @Override
                         public void onSuccess(List<FirebaseVisionBarcode> barcodes) {
                             // Task completed successfully
                             Log.d(TAG, "SUCCESS!!!");
+                            Log.d(TAG, "but 0 barcodes recognized :(");
                             if (barcodes.size() > 0) {
+                                Log.d(TAG, "num of barcodes" + barcodes.size());
                                 mBarcodeNumber.setText(barcodes.get(0).getDisplayValue());
+                            } else {
+                                mBarcodeNumber.setText("no barcodes recognized :(");
                             }
                         }
                     })
