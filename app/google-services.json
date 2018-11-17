@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "699615804948",
+    "firebase_url": "https://recycleasy-muc.firebaseio.com",
+    "project_id": "recycleasy-muc",
+    "storage_bucket": "recycleasy-muc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:699615804948:android:eefa2bc16e8d9bc3",
+        "android_client_info": {
+          "package_name": "com.example.android.recycle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "699615804948-iuhhrqk07lh6l8k692qpvfikiqi2ifsq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYatjr37qxCg4xotRvNBKz1E4VyC-HUBk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
